@@ -1,0 +1,323 @@
+% !TeX program = xelatex
+% !TeX encoding = UTF-8
+% !TeX spellcheck = de_DE
+% !BIB program = biber
+%%
+%% The above lines help editors like TeXstudio to automatically choose the right tools
+%% to compile your LaTeX source file. If your tool does not support these magic comments,
+%% you will need to make appropriate manual choices.
+%%
+%% You can safely use "pdflatex" instead of "xelatex" if you prefer the pdfLaTeX toolchain.
+%% However, pdfLaTeX will not be able to deliver the professional font experience that you
+%% will get with XeLaTeX. You can also safely use "lualatex" instead of "xelatex" while
+%% preserving the professional font experience if you prefer the LuaLaTeX toolchain.
+%%
+%% _Important_: These magic comments should be on the first lines of your source file. 
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% LIMAK LaTeX Masterarbeits-Vorlage
+%%
+%% Basierend auf der JKU LaTeX Technical Report Vorlage von Michael Roland (2021)
+%% Angepasst für LIMAK Johannes Kepler Universität - Master in Management
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Document class: This is a koma-script book.
+%%
+\documentclass[a4paper,oneside,11pt,english,ngerman]{scrbook}
+%%
+%% The comma-separated list in square brackets are class options.
+%% Useful options that you might want to use: 
+%%
+%% Paper size:
+%%  * a4paper ... A4 paper size
+%%
+%% Optimize for single-sided or double-sided printing:
+%%  * oneside ... single-sided 
+%%  * twoside ... double-sided
+%%
+%% Base font size:
+%%  * 10pt ... 10-pt font is used for normal text
+%%  * 11pt ... 11-pt font is used for normal text (LIMAK Standard = Arial 11pt)
+%%  * 12pt ... 12-pt font is used for normal text 
+%%
+%% Define document languages (the last specified language becomes the document default
+%% language):
+%%  * ngerman ... German (Hauptsprache für LIMAK-Arbeiten)
+%%  * english ... English
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Treat input files as UTF-8 encoded. Make sure to always load this when you use pdfLaTeX
+%% so that pdfLaTeX knows how to read and interpret characters in this source file.
+%%
+\usepackage[utf8]{inputenc}
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Use the JKU LaTeX technical report template for this document.
+%%
+\usepackage[mathesis,nofancyfonts,LIMAK]{jkureport}
+%%
+%% The comma-separated list in square brackets are theme options. Useful options that you
+%% might want to use:
+%%
+%% Document type:
+%%  * mathesis      ... Master's thesis (für LIMAK Master in Management)
+%%
+%% Color scheme selection options:
+%%  * LIMAK ... Use LIMAK Austrian Business School color scheme (mit LIMAK-Logo)
+%%  * BUS   ... Use Business School color scheme (generisch)
+%%  * JKU   ... Use JKU (gray) color scheme
+%%
+%% Font options (requires XeTeX/LuaTeX):
+%%  * fancyfonts    ... Use custom TTF fonts with XeTeX/LuaTeX
+%%  * compactmono   ... Use condensed fixed-width font everywhere.
+%%  * nocompactverb ... Do not use condensed fixed-width font for verbatim and listings.
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% This is the place where you can load additional packages. If you want to load
+%% a package `biblatex', you would use the command `\usepackage{biblatex}'.
+%%
+\usepackage{csquotes}
+%% LIMAK verwendet Harvard-Zitierstil (author-year) gemäß Leitfaden
+%% Beispiel: (Mustermann / Musterfrau 2020, S. 15)
+\usepackage[backend=biber,style=authoryear,maxcitenames=2,maxbibnames=99,sorting=nyt,uniquename=false,uniquelist=false]{biblatex}
+%% "/" zwischen zwei Autoren (gemäß Leitfaden Beispiel: Johnson / Scholes 2005)
+\renewcommand*{\finalnamedelim}{\addspace/\addspace}
+\renewcommand*{\multinamedelim}{,\addspace}
+\setcounter{biburlnumpenalty}{100} %% reducing biburl* penalties typically improves URL placement in bibliography
+\setcounter{biburllcpenalty}{100}
+\setcounter{biburlucpenalty}{100}
+\usepackage{todonotes}
+\usepackage{import}
+\usepackage{amsfonts}
+\usepackage{subfigure}
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% LIMAK-spezifische Formatierung (entsprechend Word-Vorlage)
+%%
+%% Schriftart: Arial (statt Merriweather)
+%% Schriftgröße: 11pt (Dokumentklasse)
+%% Zeilenabstand: 1.5
+%% Seitenränder: 3cm oben/unten/links, 2.5cm rechts
+%%
+\usepackage{setspace}
+\onehalfspacing  % 1.5 Zeilenabstand
+
+% Seitenränder anpassen (Word-Vorlage: 3/3/3/2.5 cm)
+\usepackage{geometry}
+\geometry{
+    top=3cm,
+    bottom=3cm,
+    left=3cm,
+    right=2.5cm,
+    head=16.43pt  % Fix head height warning from scrlayer-scrpage
+}
+
+% Arial als Hauptschriftart (LIMAK Standard)
+% Mit nofancyfonts Option wird fontspec nicht von jkureport geladen,
+% daher laden wir es hier selbst für Arial
+\usepackage{fontspec}
+\setmainfont{Arial}
+\setsansfont{Arial}
+
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Bibliography data files.
+%%
+\addbibresource{references.bib}
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Logo-Größe und -Position anpassen für breites LIMAK-Logo
+%% Das LIMAK-Logo ist breiter als Standard-JKU-Logos (Verhältnis 3.5:1)
+%% Das Logo wird rechtsbündig mit dem Textblock ausgerichtet
+%% WICHTIG: Diese Anpassungen müssen NACH \begin{document} stehen!
+%%
+\makeatletter
+\setlength{\jkureport@logo@titlepage@height}{16mm}      % Standard: 25mm, für LIMAK kleiner
+\setlength{\jkureport@logo@titlepage@hoffset}{12.9mm}   % Standard-Wert beibehalten für Ausrichtung
+\makeatother
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Begin with the frontmatter (among other things, this switches to roman page numbers)
+\frontmatter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Thesis information and title page
+%%
+
+%% Command \title{title}: sets the title of your thesis
+%% TODO: Ersetzen Sie den Titel mit Ihrem eigenen Thema
+\title{Titel der Master Thesis}
+
+%% Command \titleshort{short title}: sets an abbreviated version of the thesis title for page heads
+\titleshort{Kurztitel für Kopfzeile}
+
+%% Command \subtitle{subtitle}: optional subtitle
+\subtitle{Untertitel der Arbeit (optional)}
+
+%% Command \author{name}: sets the author's name; use \prefix{} and \suffix{} to add academic titles
+%%   and suffixes, use \matno{} to add the immatriculation number
+%% TODO: Ersetzen Sie mit Ihrem Namen und Ihrer Matrikelnummer
+\author{Vorname~Nachname\matno{12345678}}
+
+%% Command \supervisor[number,gender]{name}: sets the name of the supervisor (where number optionally
+%%   defines the rank of the supervisor (1-3) and gender specifies if the supervisor is male (m) or
+%%   female (f/w) to adapt gender-specific terms in German)
+%% TODO: Ersetzen Sie mit dem Namen Ihrer Betreuungsperson
+\supervisor{\prefix{Prof. Dr.} Betreuer*in~Name}
+
+%% Command \assistantsupervisor{name}: sets the name of the assistant supervisor(s) (optional)
+%\assistantsupervisor{\prefix{Dr.} Vorname~Nachname \suffix{MSc}}
+
+%% Command \degree{degree}{degree program}: sets the degree and degree program name
+%% WICHTIG: Wählen Sie die richtige Variante je nach Curriculum:
+%%   - Curriculum ab 2025S: "Master of Business Administration"
+%%   - Curriculum ab 2023W: "Executive Master of Business Administration"
+%% Passen Sie auch den Studiengang an Ihr Programm an (z.B. Executive MBA, Global Executive MBA)
+\degree{Master of Business Administration}{Executive MBA Management \& Leadership}
+
+%% Command \submissiondepartment{institute or department}: set the department that the thesis is submitted at
+\submissiondepartment{LIMAK Austrian Business School\\Johannes Kepler Universität Linz}
+
+%% Command \date{YYYY-MM-DD}: set the day of submission (defaults to today)
+%\date{2025-XX-XX}
+
+%% Command \keywords{text}: set the document keywords
+%% HINWEIS: Schlüsselwörter sind bei LIMAK-Arbeiten nicht üblich und werden
+%% nicht auf der Titelseite angezeigt. Sie können diese Zeile auskommentiert lassen.
+%\keywords{Schlüsselwort1, Schlüsselwort2, Schlüsselwort3}
+
+%% Finally, print the title page using the above information:
+\maketitle
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Include your abstract into the frontmatter
+%%
+\import{./}{00-abstract}
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Eidesstattliche Erklärung (required for LIMAK theses)
+%%
+\cleardoubleoddpage
+\chapter*{Eidesstattliche Erklärung}
+\addcontentsline{toc}{chapter}{Eidesstattliche Erklärung}
+
+Ich erkläre an Eides statt, dass ich die vorliegende Masterarbeit selbstständig und ohne fremde Hilfe verfasst, andere als die angegebenen Quellen und Hilfsmittel nicht benutzt bzw. die wörtlich oder sinngemäß entnommenen Stellen als solche kenntlich gemacht habe.
+
+Die vorliegende Masterarbeit ist mit dem elektronisch übermittelten Textdokument identisch.
+
+\vspace{3cm}
+
+\noindent
+\begin{tabular}{@{}p{0.4\textwidth}p{0.5\textwidth}@{}}
+\hrulefill & \hrulefill \\
+Ort, Datum & Unterschrift \\
+\end{tabular}
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Include your acknowledgements into the frontmatter (optional)
+%%
+%\cleardoubleoddpage
+%\import{./}{acknowledgements}
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Add a table of contents (and optionally various other lists)
+%%
+\cleardoubleoddpage
+\tableofcontents
+
+%% Print the list of tables (optional)
+%\cleardoubleoddpage
+%\listoftables
+
+%% Print the list of figures (optional)
+%\cleardoubleoddpage
+%\listoffigures
+
+%% Include list of acronyms (optional)
+%\cleardoubleoddpage
+%\import{./}{acronyms}
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Begin with the mainmatter (among other things, this switches to arabic page numbers)
+\mainmatter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Include your chapters
+%%
+\import{./}{01-einleitung}
+\import{./}{02-theoretische-grundlagen}
+\import{./}{03-methodik}
+\import{./}{04-ist-analyse}
+\import{./}{05-soll-konzept}
+\import{./}{06-implementierung}
+\import{./}{07-evaluation}
+\import{./}{08-diskussion}
+\import{./}{09-zusammenfassung}
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Print the bibliography
+%%
+\cleardoubleoddpage
+\printbibliography
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Begin with the appendix part (all further chapters will be appendices)
+\appendix
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Include your appendix chapters
+%%
+\import{./}{91-anhang}
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\cleardoubleoddpage
+
+\end{document}
+\endinput

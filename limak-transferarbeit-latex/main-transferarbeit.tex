@@ -1,0 +1,274 @@
+% !TeX program = xelatex
+% !TeX encoding = UTF-8
+% !TeX spellcheck = de_DE
+% !BIB program = biber
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% LIMAK LaTeX Transferarbeits-Vorlage
+%%
+%% Basierend auf der JKU LaTeX Technical Report Vorlage von Michael Roland (2021)
+%% Angepasst für LIMAK Transferarbeiten - Master in Management
+%%
+%% Transferarbeiten sind praxisorientierte, nach wissenschaftlichen Kriterien
+%% formulierte schriftliche Arbeiten (siehe Leitfaden_Transferarbeit_2024.pdf)
+%%
+%% Struktur gemäß LIMAK Leitfaden:
+%% 1. Ausgangssituation
+%% 2. Fragestellung
+%% 3. Zielsetzung der Arbeit
+%% 4. Inhaltliche Bearbeitung
+%% 5. Schlussfolgerungen mit Handlungsempfehlungen
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Document class: This is a koma-script article (shorter than book/thesis).
+%%
+\documentclass[a4paper,oneside,11pt,ngerman]{scrartcl}
+%%
+%% Using scrartcl (article) instead of scrbook for shorter Transferarbeiten
+%% Options:
+%%  * a4paper ... A4 paper size
+%%  * oneside ... single-sided
+%%  * 11pt ... 11-pt font (Arial 11pt ist LIMAK Standard)
+%%  * ngerman ... German language
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% UTF-8 encoding for pdfLaTeX compatibility
+%%
+\usepackage[utf8]{inputenc}
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Load necessary packages
+%%
+\usepackage{csquotes}
+\usepackage{import}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{microtype}  % Improved typography and line breaking
+\usepackage{tikz}  % For creating diagrams and figures
+
+%% Load hyperref before biblatex for proper citation hyperlinking
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    citecolor=blue,
+    %% TODO: Passen Sie diese Metadaten an
+    pdfauthor={[Ihr Name]},
+    pdftitle={[Titel der Transferarbeit]}
+}
+
+%% Load biblatex after hyperref
+%% LIMAK verwendet Harvard-Zitierstil (author-year) gemäß Leitfaden
+\usepackage[backend=biber,style=authoryear,maxcitenames=2,maxbibnames=99,sorting=nyt,hyperref=true,uniquename=false,uniquelist=false]{biblatex}
+
+%% Make entire citation (author + year) hyperlinked, not just the year
+\ExecuteBibliographyOptions{citetracker=true,sorting=nyt}
+\DeclareFieldFormat{citehyperref}{%
+  \DeclareFieldAlias{bibhyperref}{noformat}%
+  \bibhyperref{#1}}
+\DeclareFieldFormat{textcitehyperref}{%
+  \DeclareFieldAlias{bibhyperref}{noformat}%
+  \bibhyperref{%
+    #1%
+    \ifbool{cbx:parens}
+      {\bibcloseparen\global\boolfalse{cbx:parens}}
+      {}}}
+\savebibmacro{cite}
+\savebibmacro{textcite}
+\renewbibmacro*{cite}{%
+  \printtext[citehyperref]{%
+    \restorebibmacro{cite}%
+    \usebibmacro{cite}}}
+\renewbibmacro*{textcite}{%
+  \ifboolexpr{
+    ( not test {\iffieldundef{prenote}} and
+      test {\ifnumequal{\value{citecount}}{1}} )
+    or
+    ( not test {\iffieldundef{postnote}} and
+      test {\ifnumequal{\value{citecount}}{\value{citetotal}}} )
+  }
+    {\DeclareFieldAlias{textcitehyperref}{noformat}}
+    {}%
+  \printtext[textcitehyperref]{%
+    \restorebibmacro{textcite}%
+    \usebibmacro{textcite}}}
+
+\setcounter{biburlnumpenalty}{100}
+\setcounter{biburllcpenalty}{100}
+\setcounter{biburlucpenalty}{100}
+
+%% LIMAK-spezifisch: "/" zwischen zwei Autoren (gemäß Leitfaden Beispiel)
+%% Beispiel: (Johnson / Scholes 2005, 435)
+%% Alternative: "&" ist ebenfalls zulässig
+\renewcommand*{\finalnamedelim}{\addspace/\addspace}
+\renewcommand*{\multinamedelim}{,\addspace}
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% LIMAK-spezifische Formatierung (entsprechend Leitfaden Transferarbeit 2024)
+%%
+%% Schriftart: Arial 11pt
+%% Zeilenabstand: 1.5
+%% Seitenformat: DIN A4
+%%
+\usepackage{setspace}
+\onehalfspacing  % 1.5 Zeilenabstand
+
+% Seitenränder - standard für Transferarbeiten
+\usepackage{geometry}
+\geometry{
+    top=2.5cm,
+    bottom=2.5cm,
+    left=3cm,
+    right=2.5cm
+}
+
+% Arial als Hauptschriftart (LIMAK Standard)
+\usepackage{fontspec}
+\setmainfont{Arial}
+\setsansfont{Arial}
+
+% Better hyphenation and line breaking for German text
+\tolerance=2000              % Allow more spacing flexibility (default: 200)
+\emergencystretch=3em        % Allow up to 3em extra spacing in emergency
+\hyphenpenalty=50            % Low penalty for hyphenation (helps with long German words)
+\exhyphenpenalty=50          % Low penalty for explicit hyphens
+\widowpenalty=10000          % Prevent widow lines
+\clubpenalty=10000           % Prevent orphan lines
+\sloppy                      % Be more lenient with spacing to avoid overfull boxes
+
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Bibliography data files.
+%%
+\addbibresource{references.bib}
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% TITELSEITE
+%% Gemäß Leitfaden muss die Titelseite folgende Angaben enthalten:
+%% - Programmname
+%% - Titel der Lehrveranstaltung
+%% - Fakultätsmitglied
+%% - Name der Autorin*des Autors
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{titlepage}
+    % LIMAK Logo - centered at top
+    \centering
+    \includegraphics[height=18mm]{logos/jku_LIMAK_black.png}
+
+    \vspace{1.5cm}
+    {\Large\bfseries LIMAK Austrian Business School\\}
+    {\large Johannes Kepler Universität Linz\\}
+
+    \vspace{1cm}
+
+    %% TODO: Programmname anpassen (z.B. "Master in Management", "Executive MBA")
+    {\Large {[Programmname]}\\}
+
+    \vspace{2cm}
+
+    %% TODO: Titel der Transferarbeit anpassen
+    {\LARGE\bfseries {[Titel der Transferarbeit]}\\}
+
+    \vspace{0.5cm}
+
+    %% TODO: Optional: Untertitel anpassen oder entfernen
+    {\large {[Optionaler Untertitel]}\\}
+
+    \vspace{2cm}
+
+    {\large\bfseries Transferarbeit\\}
+    eingereicht im Rahmen der Lehrveranstaltung\\
+    %% TODO: Lehrveranstaltung anpassen
+    {\bfseries [Name der Lehrveranstaltung]}
+
+    \vspace{1cm}
+
+    bei\\
+    %% TODO: Fakultätsmitglied anpassen
+    {\bfseries [Titel Vorname Nachname]}
+
+    \vfill
+
+    eingereicht von\\
+    %% TODO: Eigenen Namen anpassen
+    {\bfseries [Ihr Name, Titel]}
+
+    \vspace{1cm}
+
+    \today
+
+\end{titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Inhaltsverzeichnis
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tableofcontents
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% HAUPTTEIL DER TRANSFERARBEIT
+%%
+%% Struktur gemäß LIMAK Leitfaden (5-Abschnitte-Struktur):
+%% 1. Ausgangssituation - Kontext und Hintergrund
+%% 2. Fragestellung - Zentrale Frage der Arbeit
+%% 3. Zielsetzung der Arbeit - Theoretische und praktische Ziele
+%% 4. Inhaltliche Bearbeitung - Hauptteil mit Theorie-Praxis-Transfer
+%% 5. Schlussfolgerungen mit Handlungsempfehlungen - Fazit und Empfehlungen
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\import{./}{01-ausgangssituation}
+\import{./}{02-fragestellung}
+\import{./}{03-zielsetzung}
+\import{./}{04-inhaltliche-bearbeitung}
+\import{./}{05-schlussfolgerungen}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Literaturverzeichnis
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\printbibliography[heading=bibintoc,title={Literaturverzeichnis}]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Anhang (optional)
+%%
+%% Aktivieren Sie diese Zeilen bei Bedarf:
+%% \newpage
+%% \import{./}{09-anhang}
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

@@ -1,0 +1,77 @@
+# ==============================================================================
+# LaTeX auxiliary files
+# ==============================================================================
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+*.xdv
+*.nav
+*.snm
+*.vrb
+
+# Biber/BibTeX
+*.bib.bak
+*-blx.bib
+
+# Index files
+*.idx
+*.ilg
+*.ind
+
+# Glossary files
+*.glo
+*.gls
+*.glg
+*.acn
+*.acr
+*.alg
+
+# Nomenclature
+*.nlo
+*.nls
+
+# ==============================================================================
+# Generated PDFs (compiled LaTeX documents)
+# Logo PDFs in logos/ folders are NOT ignored - they are source files
+# ==============================================================================
+limak-thesis-latex/*.pdf
+limak-transferarbeit-latex/*.pdf
+!limak-thesis-latex/logos/*.pdf
+!limak-transferarbeit-latex/logos/*.pdf
+
+# ==============================================================================
+# Editor/IDE files
+# ==============================================================================
+# Note: .vscode/ is NOT ignored - it contains project-specific LaTeX configuration
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ==============================================================================
+# Temporary files
+# ==============================================================================
+*.tmp
+*.temp
+
+# ==============================================================================
+# Build directories
+# ==============================================================================
+build/
+_minted-*/
+
+# ==============================================================================
+# Instructions directory (contains official LIMAK documents - not for distribution)
+# ==============================================================================
+/instructions/
