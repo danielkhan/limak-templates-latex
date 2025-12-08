@@ -101,7 +101,28 @@ cd LIMAK-Masterthesis-Template
 
 > **💡 Hinweis**: Die XeLaTeX-Konfiguration ist bereits im Projekt enthalten (`.vscode/settings.json`). Du musst nichts manuell konfigurieren!
 
-#### Schritt 3: Arial-Schriftart prüfen
+#### Schritt 3: Claude Code installieren (optional, aber empfohlen)
+
+**Claude Code** ([claude.code](https://claude.ai/code)) ist ein KI-Assistent, der dir beim Bearbeiten deiner Arbeit helfen kann.
+
+1. **VS Code Extension installieren**:
+   - Öffne VS Code
+   - Gehe zu Extensions (linke Seitenleiste oder `Strg+Shift+X`)
+   - Suche nach "Claude Code"
+   - Klicke auf "Install"
+
+2. **Mit Claude.ai verbinden**:
+   - Nach Installation: Klicke auf das Claude-Icon in der Seitenleiste
+   - Folge den Anweisungen zur Anmeldung
+   - Wähle deinen Plan (kostenlos oder Pro)
+
+3. **Claude starten**:
+   - Drücke `Strg+Shift+P` und wähle "Claude Code: Start Chat"
+   - Oder klicke auf das Claude-Icon in der Seitenleiste
+
+> **⚠️ Wichtig**: Claude hilft beim **Formatieren und Bearbeiten** - NICHT beim Verfassen der wissenschaftlichen Inhalte! Siehe [🤖 Arbeiten mit Claude Code](#-arbeiten-mit-claude-code) für Details.
+
+#### Schritt 4: Arial-Schriftart prüfen
 
 Arial ist unter Windows standardmäßig installiert. Zur Sicherheit prüfen:
 
@@ -158,7 +179,28 @@ Arial ist unter Windows standardmäßig installiert. Zur Sicherheit prüfen:
 
 > **💡 Hinweis**: Die XeLaTeX-Konfiguration ist bereits im Projekt enthalten (`.vscode/settings.json`). Du musst nichts manuell konfigurieren!
 
-#### Schritt 3: Arial-Schriftart prüfen
+#### Schritt 3: Claude Code installieren (optional, aber empfohlen)
+
+**Claude Code** ([claude.code](https://claude.ai/code)) ist ein KI-Assistent, der dir beim Bearbeiten deiner Arbeit helfen kann.
+
+1. **VS Code Extension installieren**:
+   - Öffne VS Code
+   - Gehe zu Extensions (linke Seitenleiste oder `Cmd+Shift+X`)
+   - Suche nach "Claude Code"
+   - Klicke auf "Install"
+
+2. **Mit Claude.ai verbinden**:
+   - Nach Installation: Klicke auf das Claude-Icon in der Seitenleiste
+   - Folge den Anweisungen zur Anmeldung
+   - Wähle deinen Plan (kostenlos oder Pro)
+
+3. **Claude starten**:
+   - Drücke `Cmd+Shift+P` und wähle "Claude Code: Start Chat"
+   - Oder klicke auf das Claude-Icon in der Seitenleiste
+
+> **⚠️ Wichtig**: Claude hilft beim **Formatieren und Bearbeiten** - NICHT beim Verfassen der wissenschaftlichen Inhalte! Siehe [🤖 Arbeiten mit Claude Code](#-arbeiten-mit-claude-code) für Details.
+
+#### Schritt 4: Arial-Schriftart prüfen
 
 Arial ist unter macOS standardmäßig installiert. Zur Sicherheit prüfen:
 
@@ -563,12 +605,28 @@ Siehe [CLAUDE.md](CLAUDE.md) für ausführliche Informationen zu:
 
 ## 📄 Lizenz
 
+Dieses Projekt steht unter der **Mozilla Public License 2.0** (MPL-2.0).
+
+### Ursprung und Anpassungen
+
 Diese Vorlagen basieren auf der **JKU LaTeX Technical Report Template** von Michael Roland:
 - Copyright (c) 2021-2025 Michael Roland
-- Lizenz: [Mozilla Public License v2.0](https://www.mozilla.org/en-US/MPL/2.0/)
 - Original: [github.com/michaelroland/jku-templates-report-latex](https://github.com/michaelroland/jku-templates-report-latex)
 
-Die LIMAK-Anpassungen sind frei verfügbar für alle LIMAK-Studierenden.
+Die LIMAK-spezifischen Anpassungen (Farben, Logos, Struktur, Richtlinien) wurden hinzugefügt und stehen ebenfalls unter MPL-2.0.
+
+### Was bedeutet das?
+
+✅ **Du darfst:**
+- Die Vorlagen frei verwenden, auch für deine Masterarbeit
+- Die Vorlagen anpassen und modifizieren
+- Die Vorlagen mit anderen teilen
+
+⚠️ **Bedingung:**
+- Änderungen an den `.tex`/`.sty`-Dateien müssen unter MPL-2.0 bleiben
+- Deine wissenschaftlichen Inhalte gehören natürlich dir!
+
+📄 Vollständiger Lizenztext: [LICENSE](LICENSE)
 
 ---
 
