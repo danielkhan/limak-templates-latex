@@ -1,0 +1,207 @@
+% !TeX program = xelatex
+% !TeX encoding = UTF-8
+% !TeX spellcheck = de_DE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% LIMAK Grobkonzept Vorlage
+%%
+%% Das Grobkonzept ist ein kurzes Dokument (ca. 2-4 Seiten), das vor Beginn
+%% der Masterarbeit eingereicht wird. Es dient zur Abstimmung des Themas
+%% mit dem Betreuer.
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[a4paper,oneside,11pt,ngerman]{scrartcl}
+
+% Pakete
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{fontspec}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage{titlesec}
+
+% Seitenraender (entsprechend LIMAK Word-Vorlage)
+\geometry{
+    a4paper,
+    left=3cm,
+    right=2.5cm,
+    top=3cm,
+    bottom=3cm
+}
+
+% 1.5 Zeilenabstand (LIMAK Standard)
+\usepackage{setspace}
+\onehalfspacing
+
+% Schriftarten - Arial (entsprechend LIMAK Word-Vorlage)
+\setmainfont{Arial}
+\setsansfont{Arial}
+
+% LIMAK Farben (Business School)
+\definecolor{limakblue}{RGB}{0,51,153}
+\definecolor{limakgray}{RGB}{102,102,102}
+
+% Hyperref Setup
+%% TODO: Passen Sie die Metadaten an
+\hypersetup{
+    colorlinks=true,
+    linkcolor=limakblue,
+    urlcolor=limakblue,
+    citecolor=limakblue,
+    pdfauthor={Ihr Name},
+    pdftitle={Grobkonzept Masterarbeit - LIMAK},
+    pdfsubject={Kurze Beschreibung des Themas}
+}
+
+% Titel-Formatierung
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{limakblue}}{\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{limakgray}}{\thesubsection}{1em}{}
+
+\begin{document}
+
+% Titelseite mit LIMAK Logo
+\begin{titlepage}
+    \begin{center}
+        \includegraphics[height=20mm]{logos/jku_LIMAK_black.png}
+
+        \vspace{2cm}
+
+        {\Huge\bfseries\color{limakblue} Grobkonzept\\[0.3em] Masterarbeit}
+
+        \vspace{1.5cm}
+
+        %% TODO: Titel der Arbeit anpassen
+        {\Large\bfseries Titel der geplanten Masterarbeit\\[0.5em]
+        Optionaler Untertitel}
+
+        \vspace{1cm}
+
+
+        \vfill
+
+        {\large
+        %% TODO: Anpassen Sie diese Angaben
+        \textbf{Verfasser:} Ihr Name\\[0.5em]
+        \textbf{Studiengang:} z.B. EMBA fuer General Management\\[0.5em]
+        \textbf{Institution:} LIMAK Austrian Business School\\[0.5em]
+        \textbf{Datum:} \today
+        }
+
+        \vspace{1cm}
+    \end{center}
+\end{titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% INHALT DES GROBKONZEPTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Ausgangslage, Problemstellung und Motivation}
+
+%% Beschreiben Sie den Kontext und die Ausgangssituation
+Beschreibung des Unternehmens/der Organisation und der aktuellen Situation. Welches Problem oder welche Herausforderung besteht? Warum ist dieses Thema relevant?
+
+\subsection{Problemstellung}
+
+Konkrete Beschreibung des Problems, das in der Arbeit behandelt werden soll. Was funktioniert nicht optimal? Welche Luecken bestehen?
+
+\begin{itemize}[leftmargin=*]
+    \item Aspekt 1 der Problemstellung
+    \item Aspekt 2 der Problemstellung
+    \item Aspekt 3 der Problemstellung
+\end{itemize}
+
+\subsection{Motivation}
+
+Warum ist dieses Thema fuer Sie persoenlich und/oder fuer das Unternehmen wichtig? Was erhoffen Sie sich von der Bearbeitung?
+
+\section{Ziele der Arbeit}
+
+%% Formulieren Sie klare, messbare Ziele
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Deskriptives Ziel:} z.B. Entwicklung eines Modells, Darstellung von Best Practices
+    \item \textbf{Evaluatives Ziel:} z.B. Bewertung von Alternativen, Messung von Effekten
+    \item \textbf{Praktisches Ziel:} z.B. Implementierung einer Loesung, Entwicklung von Handlungsempfehlungen
+    \item \textbf{Wissenschaftliches Ziel:} z.B. Beitrag zur Forschung, Schliessen einer Forschungsluecke
+\end{itemize}
+
+\section{Grundsaetzliche Gliederung der Arbeit}
+
+\subsection{Geplante Kapitelstruktur}
+
+%% Skizzieren Sie die voraussichtliche Struktur
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Einleitung}
+    \begin{itemize}
+        \item Ausgangssituation und Problemstellung
+        \item Zielsetzung und Forschungsfrage
+        \item Aufbau der Arbeit
+    \end{itemize}
+
+    \item \textbf{Theoretische Grundlagen}
+    \begin{itemize}
+        \item Theoriebereich 1
+        \item Theoriebereich 2
+        \item Stand der Forschung
+    \end{itemize}
+
+    \item \textbf{Methodik}
+    \begin{itemize}
+        \item Forschungsdesign
+        \item Datenerhebung
+        \item Datenauswertung
+    \end{itemize}
+
+    \item \textbf{Empirischer Teil / Analyse}
+    \begin{itemize}
+        \item Ist-Analyse / Fallstudie / Erhebung
+        \item Ergebnisdarstellung
+    \end{itemize}
+
+    \item \textbf{Konzept / Loesung}
+    \begin{itemize}
+        \item Entwicklung des Loesungsansatzes
+        \item Implementierung / Umsetzung
+    \end{itemize}
+
+    \item \textbf{Evaluation / Diskussion}
+    \begin{itemize}
+        \item Bewertung der Ergebnisse
+        \item Limitationen
+    \end{itemize}
+
+    \item \textbf{Zusammenfassung und Ausblick}
+    \begin{itemize}
+        \item Beantwortung der Forschungsfrage
+        \item Praktische Implikationen
+        \item Weitere Forschungsbedarfe
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Inhaltliche Prioritaeten}
+
+%% Was sind die Schwerpunkte Ihrer Arbeit?
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Schwerpunkt 1:} Kurze Beschreibung
+    \item \textbf{Schwerpunkt 2:} Kurze Beschreibung
+    \item \textbf{Schwerpunkt 3:} Kurze Beschreibung
+\end{itemize}
+
+\section{Methodik (optional)}
+
+%% Falls bereits bekannt, skizzieren Sie das methodische Vorgehen
+Kurze Beschreibung der geplanten Forschungsmethodik: Qualitativ/Quantitativ? Fallstudie? Interviews? Fragebogen? etc.
+
+\section{Zeitplan (optional)}
+
+%% Grober Zeitplan fuer die Erstellung der Arbeit
+Skizzieren Sie wichtige Meilensteine und den geplanten Abgabetermin.
+
+\end{document}

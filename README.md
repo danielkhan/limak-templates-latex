@@ -1,8 +1,10 @@
 # LIMAK LaTeX Templates
 
+> **ℹ️ Hinweis**: Dies ist **kein offizielles Repository** der Johannes Kepler Universität Linz oder der LIMAK Austrian Business School. Diese Vorlagen basieren auf dem [JKU Templates Report LaTeX](https://github.com/michaelroland/jku-templates-report-latex) Repository und wurden für LIMAK-spezifische Anforderungen angepasst.
+
 Professionelle LaTeX-Vorlagen für wissenschaftliche Arbeiten an der **LIMAK Austrian Business School** (Johannes Kepler Universität Linz).
 
-Diese Vorlagen entsprechen vollständig den offiziellen LIMAK-Richtlinien und ermöglichen die Erstellung wissenschaftlicher Arbeiten mit professionellem Layout.
+Diese Vorlagen entsprechen den offiziellen LIMAK-Richtlinien und ermöglichen die Erstellung wissenschaftlicher Arbeiten mit professionellem Layout.
 
 ## 📚 Enthaltene Vorlagen
 
@@ -472,6 +474,69 @@ Der Ordner `instructions/` enthält:
 - **Word-Vorlagen**: Für Studierende, die kein LaTeX verwenden
 
 Diese Vorlagen implementieren die Anforderungen aus diesen offiziellen Dokumenten.
+
+---
+
+## 🤖 Arbeiten mit Claude Code
+
+Dieses Repository ist optimiert für die Nutzung mit **Claude Code** (claude.ai/code) - einem KI-Assistenten, der dir beim Bearbeiten deiner Arbeit helfen kann.
+
+### Claude Code installieren
+
+1. **Installiere die VS Code Extension**:
+   - Öffne VS Code
+   - Gehe zu Extensions (linke Seitenleiste oder `Strg+Shift+X`)
+   - Suche nach "Claude Code"
+   - Klicke auf "Install"
+
+2. **Mit Claude.ai verbinden**:
+   - Nach Installation: Klicke auf das Claude-Icon in der Seitenleiste
+   - Folge den Anweisungen zur Anmeldung bei Claude.ai
+   - Wähle deinen Plan (kostenlos oder Pro)
+
+3. **Claude in diesem Projekt starten**:
+   - Öffne das LIMAK Template Projekt in VS Code
+   - Drücke `Strg+Shift+P` (Windows) oder `Cmd+Shift+P` (macOS)
+   - Tippe "Claude" und wähle "Claude Code: Start Chat"
+   - Oder klicke einfach auf das Claude-Icon in der Seitenleiste
+
+### Was Claude für dich tun kann
+
+✅ **Claude KANN helfen bei:**
+- LaTeX-Formatierung (Tabellen, Abbildungen, TikZ-Diagramme)
+- Literaturverzeichnis korrekt formatieren (Harvard-Stil)
+- LaTeX-Fehler beheben und debuggen
+- Querverweise und Nummerierung prüfen
+- Titelseite und Metadaten anpassen
+
+❌ **Claude SOLLTE NICHT helfen bei:**
+- Wissenschaftliche Inhalte verfassen
+- Forschungsfragen formulieren
+- Argumentationen entwickeln
+- Literatur analysieren
+- Ergebnisse interpretieren
+
+> **⚠️ Wichtig**: Claude unterstützt beim **Bearbeiten und Formatieren** - NICHT beim Verfassen der wissenschaftlichen Inhalte. Die fachlichen Inhalte müssen von dir stammen (Eigenleistung)!
+
+### Praktische Beispiele
+
+**✅ Gute Nutzung:**
+- "Kannst du diese Daten als LaTeX-Tabelle formatieren?" + deine Daten
+- "Behebe diesen LaTeX-Kompilierfehler" + Fehler-Log
+- "Erstelle ein TikZ-Diagramm aus diesen Werten" + deine Werte
+
+**❌ Schlechte Nutzung:**
+- "Schreibe ein Kapitel über Digitalisierung"
+- "Analysiere diese Theorie für mich"
+- "Formuliere meine Forschungsfragen"
+
+### Mehr Informationen
+
+Siehe [CLAUDE.md](CLAUDE.md) für ausführliche Informationen zu:
+- Ethische Richtlinien und wissenschaftliche Integrität
+- Konkrete Beispiele für Claude-Nutzung
+- Tipps für effektive Zusammenarbeit
+- LIMAK-spezifische Formatierungshilfe
 
 ---
 

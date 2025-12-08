@@ -1,25 +1,141 @@
-# CLAUDE.md
+# CLAUDE.md - Arbeiten mit Claude an LIMAK-Arbeiten
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+Diese Datei hilft dir dabei, **Claude Code** (claude.ai/code) effektiv beim Bearbeiten deiner LIMAK Master Thesis oder Transferarbeit einzusetzen.
 
-## Repository Overview
+> **⚠️ WICHTIG**: Claude soll dich beim **Bearbeiten, Formatieren und Strukturieren** deiner Arbeit unterstützen - NICHT beim Verfassen der wissenschaftlichen Inhalte. Die fachlichen Inhalte, Argumente und Analysen müssen von dir stammen!
 
-This repository contains LaTeX templates for academic work at LIMAK Austrian Business School (Johannes Kepler Universität Linz). It includes:
+---
 
-- **limak-transferarbeit-latex/**: **Transferarbeit template** - Practice-oriented transfer assignments (shorter format)
-- **limak-thesis-latex/**: Master's thesis template (longer format, full thesis structure)
-- **jku-templates-report-latex-master/**: Base JKU technical report template (English)
-- **instructions/**: LIMAK guidelines and Word templates
-  - [Leitfaden_Transferarbeit_2024.pdf](instructions/Leitfaden_Transferarbeit_2024.pdf) - Official LIMAK Transferarbeit guidelines
-  - [Vorlage_Transferarbeit_2023.doc](instructions/Vorlage_Transferarbeit_2023.doc) - Word template for Transferarbeiten
+## 📚 Repository-Übersicht
 
-## Build Commands
+Dieses Repository enthält LaTeX-Vorlagen für akademische Arbeiten an der LIMAK Austrian Business School (Johannes Kepler Universität Linz):
 
-### Compiling LaTeX Documents
+- **limak-thesis-latex/**: Master Thesis Vorlage (60+ Seiten, 9 Kapitel)
+- **limak-transferarbeit-latex/**: Transferarbeit Vorlage (10-20 Seiten, 5 Abschnitte)
 
-The templates use **XeLaTeX** as the primary compilation engine with **Biber** for bibliography management.
+---
 
-#### Transferarbeit compilation:
+## 🎯 Wie Claude dir helfen kann
+
+### ✅ Claude KANN helfen bei:
+
+1. **LaTeX-Formatierung**
+   - Tabellen erstellen und formatieren
+   - Abbildungen einbinden (TikZ-Diagramme, PNG/PDF)
+   - Literaturverzeichnis korrekt formatieren (Harvard-Stil)
+   - LaTeX-Fehler beheben
+
+2. **Strukturierung**
+   - Kapitel-Struktur überprüfen
+   - Inhaltsverzeichnis aktualisieren
+   - Querverweise (`\ref`, `\label`) korrekt setzen
+   - Nummerierung von Abbildungen/Tabellen prüfen
+
+3. **LIMAK-Formatierungsvorgaben**
+   - Arial 11pt, 1.5 Zeilenabstand prüfen
+   - Seitenränder (3/3/3/2.5 cm) kontrollieren
+   - Harvard-Zitierstil (`\parencite`) korrekt anwenden
+   - Zwei-Autoren-Separator `/` überprüfen
+
+4. **Technische Probleme**
+   - Kompilierungsfehler beheben
+   - Biber/BibLaTeX Probleme lösen
+   - Umlaute und Sonderzeichen korrigieren
+   - PDF-Generierung debuggen
+
+5. **Vorlagen-Anpassung**
+   - Titelseite anpassen
+   - Metadaten aktualisieren
+   - Kapitel hinzufügen/entfernen
+   - Layout-Anpassungen vornehmen
+
+### ❌ Claude SOLLTE NICHT helfen bei:
+
+1. **Wissenschaftliche Inhalte verfassen**
+   - Forschungsfragen formulieren
+   - Argumentationen entwickeln
+   - Literatur analysieren
+   - Fallstudien schreiben
+   - Empirische Analysen durchführen
+
+2. **Fachliche Bewertungen**
+   - Theorien bewerten
+   - Methodenwahl begründen
+   - Ergebnisse interpretieren
+   - Schlussfolgerungen ziehen
+
+> **💡 Faustregel**: Claude hilft beim "Wie" (Formatierung, Struktur), nicht beim "Was" (Inhalt, Argumente)
+
+---
+
+## 🛠️ Praktische Beispiele für Claude-Nutzung
+
+### Beispiel 1: Tabelle formatieren
+
+**Du schreibst:**
+> "Ich habe diese Daten, kannst du eine LaTeX-Tabelle daraus machen?"
+>
+> ```
+> Kennzahl | 2022 | 2023 | 2024
+> Umsatz | 100 | 120 | 145
+> Gewinn | 10 | 15 | 20
+> ```
+
+**Claude erstellt:**
+```latex
+\begin{table}[htbp]
+\centering
+\caption{Unternehmenskennzahlen 2022-2024 (in Mio. EUR)}
+\label{tab:kennzahlen}
+\begin{tabular}{lrrr}
+\toprule
+Kennzahl & 2022 & 2023 & 2024 \\
+\midrule
+Umsatz & 100 & 120 & 145 \\
+Gewinn & 10 & 15 & 20 \\
+\bottomrule
+\end{tabular}
+\end{table}
+```
+
+### Beispiel 2: Literaturverzeichnis-Fehler beheben
+
+**Du fragst:**
+> "Meine Zitation zeigt 'undefined reference', was ist falsch?"
+
+**Claude prüft:**
+- Ist der Biber-Lauf durchgeführt?
+- Stimmt der BibTeX-Key in `\parencite{}`?
+- Ist die Quelle in `references.bib` vorhanden?
+- Ist die Harvard-Syntax korrekt?
+
+### Beispiel 3: TikZ-Diagramm aus Daten erstellen
+
+**Du schreibst:**
+> "Kannst du ein Balkendiagramm für diese Werte erstellen?"
+
+**Claude erstellt ein TikZ-Diagramm** basierend auf deinen Daten (nicht basierend auf erfundenen Daten!)
+
+### Beispiel 4: LaTeX-Fehler debuggen
+
+**Du zeigst:**
+> "Beim Kompilieren erscheint dieser Fehler: `! Missing } inserted`"
+
+**Claude hilft:**
+- Log-Datei analysieren
+- Fehlerhafte Zeile finden
+- Syntaxfehler korrigieren
+- Kompilierung testen
+
+---
+
+## 🔧 Build-Kommandos
+
+### LaTeX kompilieren
+
+Die Vorlagen verwenden **XeLaTeX** mit **Biber** für die Bibliographie.
+
+#### Transferarbeit:
 ```bash
 cd limak-transferarbeit-latex
 xelatex main-transferarbeit.tex
@@ -28,7 +144,7 @@ xelatex main-transferarbeit.tex
 xelatex main-transferarbeit.tex
 ```
 
-#### Master thesis compilation:
+#### Master Thesis:
 ```bash
 cd limak-thesis-latex
 xelatex main-limak-thesis.tex
@@ -37,296 +153,215 @@ xelatex main-limak-thesis.tex
 xelatex main-limak-thesis.tex
 ```
 
-#### Quick compilation (during editing):
+#### Schnellkompilierung (während der Bearbeitung):
 ```bash
-xelatex main-transferarbeit.tex  # or main-limak-thesis.tex
+xelatex main-limak-thesis.tex  # oder main-transferarbeit.tex
 ```
 
-#### Alternative toolchains:
-- **pdfLaTeX**: Supported but will not use professional fonts
-- **LuaLaTeX**: Fully supported with professional fonts
+---
 
-### Magic Comments
+## 📝 Template-Struktur
 
-The main `.tex` files include magic comments at the top that configure editors automatically:
-- `% !TeX program = xelatex`
-- `% !BIB program = biber`
-- `% !TeX encoding = UTF-8`
-- `% !TeX spellcheck = de_DE`
+### Master Thesis Template
 
-Most modern LaTeX editors (TeXstudio, VS Code with LaTeX Workshop) will respect these settings.
+**Hauptdatei**: `limak-thesis-latex/main-limak-thesis.tex`
 
-## Code Architecture
+**Kapitel-Dateien**:
+- `00-abstract.tex` - Abstract (DE/EN)
+- `01-einleitung.tex` - Einleitung
+- `02-theoretische-grundlagen.tex` - Theoretische Grundlagen
+- `03-methodik.tex` - Methodik
+- `04-ist-analyse.tex` - Ist-Analyse
+- `05-soll-konzept.tex` - Soll-Konzept
+- `06-implementierung.tex` - Implementierung
+- `07-evaluation.tex` - Evaluation
+- `08-diskussion.tex` - Diskussion
+- `09-zusammenfassung.tex` - Zusammenfassung
+- `91-anhang.tex` - Anhang
 
-### Template Selection Guide
+**Wichtige Dateien**:
+- `references.bib` - Literaturverzeichnis
+- `jkureport.sty` - LIMAK-Styling
+- `logos/` - LIMAK/JKU Logos
 
-**Use limak-transferarbeit-latex/** for:
-- Transferarbeiten (transfer assignments for coursework)
-- Shorter practice-oriented papers (typically 10-20 pages)
-- Assignments that apply course concepts to professional practice
-- Works that follow the 5-section structure (see Leitfaden)
+### Transferarbeit Template
 
-**Use limak-thesis-latex/** for:
-- Master's thesis (Masterarbeit)
-- Longer research-oriented work (60+ pages)
-- Full academic thesis with extensive theoretical foundations
-- Works requiring detailed chapter structure (9+ chapters)
+**Hauptdatei**: `limak-transferarbeit-latex/main-transferarbeit.tex`
 
-### LIMAK Transferarbeit Template Structure
+**Abschnitts-Dateien** (gemäß LIMAK Leitfaden):
+- `01-ausgangssituation.tex` - Ausgangssituation
+- `02-fragestellung.tex` - Fragestellung
+- `03-zielsetzung.tex` - Zielsetzung
+- `04-inhaltliche-bearbeitung.tex` - Inhaltliche Bearbeitung
+- `05-schlussfolgerungen.tex` - Schlussfolgerungen mit Handlungsempfehlungen
 
-The Transferarbeit template ([limak-transferarbeit-latex/](limak-transferarbeit-latex/)) uses a simplified structure:
+---
 
-**Main file**: [main-transferarbeit.tex](limak-transferarbeit-latex/main-transferarbeit.tex)
-- Document class: `scrartcl` (article format, shorter than book)
-- Simplified title page (no jkureport.sty dependency)
-- Direct formatting with Arial 11pt, 1.5 line spacing
+## 📖 LIMAK-spezifische Anforderungen
 
-**Chapter files** (5-section structure per Leitfaden):
-- [01-ausgangssituation.tex](limak-transferarbeit-latex/01-ausgangssituation.tex) - Initial situation and context
-- [02-fragestellung.tex](limak-transferarbeit-latex/02-fragestellung.tex) - Research question
-- [03-zielsetzung.tex](limak-transferarbeit-latex/03-zielsetzung.tex) - Objectives (theoretical & practical)
-- [04-inhaltliche-bearbeitung.tex](limak-transferarbeit-latex/04-inhaltliche-bearbeitung.tex) - Main content (theory-practice transfer)
-- [05-schlussfolgerungen.tex](limak-transferarbeit-latex/05-schlussfolgerungen.tex) - Conclusions and recommendations
+### Formatierung
 
-**Supporting files**:
-- [references.bib](limak-transferarbeit-latex/references.bib) - Bibliography with examples
-- [fonts/](limak-transferarbeit-latex/fonts/) - Optional professional fonts
-- [logos/](limak-transferarbeit-latex/logos/) - LIMAK/JKU logos
+| Element | Vorgabe | LaTeX |
+|---------|---------|-------|
+| Schriftart | Arial 11pt | `\setmainfont{Arial}` (Systemfont) |
+| Zeilenabstand | 1.5 | `\onehalfspacing` |
+| Seitenränder | 3/3/3/2.5 cm | Vorkonfiguriert in `geometry` |
+| Zitierstil | Harvard (Author-Year) | `\parencite{key}` |
 
-### LIMAK Master Thesis Template Structure
+### Harvard-Zitierstil Beispiele
 
-The LIMAK thesis template ([limak-thesis-latex/](limak-thesis-latex/)) is organized as follows:
-
-**Main file**: [main-limak-thesis.tex](limak-thesis-latex/main-limak-thesis.tex)
-- Document configuration and metadata
-- Loads `jkureport.sty` with `[mathesis,fancyfonts,LIMAK]` options
-- Imports all chapter files using `\import{./}{filename}`
-
-**Chapter files** (numbered by order):
-- [00-abstract.tex](limak-thesis-latex/00-abstract.tex) - German/English abstracts
-- [01-einleitung.tex](limak-thesis-latex/01-einleitung.tex) through [09-zusammenfassung.tex](limak-thesis-latex/09-zusammenfassung.tex) - Main content chapters
-- [91-anhang.tex](limak-thesis-latex/91-anhang.tex) - Appendix
-
-**Supporting files**:
-- [references.bib](limak-thesis-latex/references.bib) - BibLaTeX bibliography database
-- [jkureport.sty](limak-thesis-latex/jkureport.sty) - Custom JKU/LIMAK style package
-- [fonts/](limak-thesis-latex/fonts/) - Professional font files for XeLaTeX
-- [logos/](limak-thesis-latex/logos/) - LIMAK and JKU logo files
-
-### Template Customization System
-
-The `jkureport.sty` package provides a flexible configuration system via options:
-
-**Document type options**:
-- `mathesis` - Master's thesis format
-- `bathesis` - Bachelor's thesis format
-- `phdthesis` - PhD thesis format
-- `seminarreport` - Seminar report format
-
-**Branding options**:
-- `LIMAK` - LIMAK Austrian Business School (includes logo)
-- `BUS` - Generic Business School colors
-- `JKU` - Standard JKU gray scheme
-
-**Font options** (requires XeLaTeX/LuaLaTeX):
-- `fancyfonts` - Enable professional TrueType fonts
-- `nofancyfonts` - Use standard LaTeX fonts (fallback for pdfLaTeX)
-- `compactmono` - Condensed monospace everywhere
-- `nocompactverb` - Standard monospace for code/verbatim
-
-### LIMAK-Specific Formatting
-
-The LIMAK template applies specific formatting to match institutional requirements:
-
-**Typography** ([main-limak-thesis.tex:120-136](limak-thesis-latex/main-limak-thesis.tex#L120-L136)):
-- Main font: Arial (via `\setmainfont{Arial}`)
-- Font size: 11pt base
-- Line spacing: 1.5 (via `\onehalfspacing`)
-
-**Page layout** ([main-limak-thesis.tex:124-130](limak-thesis-latex/main-limak-thesis.tex#L124-L130)):
-- Margins: 3cm top/bottom/left, 2.5cm right
-- Paper: A4
-- Layout: Single-sided
-
-**Logo positioning** ([main-limak-thesis.tex:157-160](limak-thesis-latex/main-limak-thesis.tex#L157-L160)):
-- LIMAK logo has custom dimensions (wider aspect ratio than standard JKU logos)
-- Height: 16mm (reduced from standard 25mm)
-- Alignment: Right-aligned with text block
-
-### Bibliography System
-
-Uses **BibLaTeX** with **Biber** backend:
-- Style: Harvard author-year (authoryear) per LIMAK Leitfaden
-- Configuration: [main-limak-thesis.tex:95-103](limak-thesis-latex/main-limak-thesis.tex#L95-L103)
-- Two-author separator: `/` (forward slash) per LIMAK guidelines
-- Three+ authors: Automatically shortened to "et al."
-- URL breaking penalties optimized for better line breaks
-
-## Key Development Notes
-
-### Adding/Removing Chapters
-
-Edit the chapter imports section in [main-limak-thesis.tex](limak-thesis-latex/main-limak-thesis.tex) (around line 284):
+**Im Text**:
 ```latex
-\import{./}{01-einleitung}
-\import{./}{02-theoretische-grundlagen}
-% Add or remove \import{} commands here
+\parencite{Porter2008}                    % → (Porter 2008)
+\parencite[S.~123]{Porter2008}            % → (Porter 2008, S. 123)
+Müller und Schmidt \parencite{key}        % → Müller und Schmidt (2024)
 ```
 
-### Modifying Thesis Metadata
+**Zwei Autoren** (mit `/`):
+```latex
+% In references.bib:
+@article{Mueller2020,
+    author = {Müller, Anna and Schmidt, Peter},
+    ...
+}
 
-Key metadata is set in [main-limak-thesis.tex:171-210](limak-thesis-latex/main-limak-thesis.tex#L171-L210):
-- `\title{}` - Full thesis title
-- `\titleshort{}` - Abbreviated title for headers
-- `\subtitle{}` - Optional subtitle
-- `\author{}` with `\matno{}` - Author name and matriculation number
-- `\supervisor{}` - Thesis supervisor
-- `\degree{}{}` - Degree and program name (see curriculum options below)
-- `\submissiondepartment{}` - Submitting institution
-- `\date{}` - Submission date (defaults to compilation date)
-- `\keywords{}` - Document keywords
+% Wird zu: (Müller / Schmidt 2020)
+```
 
-**Curriculum Version Options** (line 196-200):
-- Curriculum ab 2025S: `\degree{Master of Business Administration}{...}`
-- Curriculum ab 2023W: `\degree{Executive Master of Business Administration}{...}`
+**Drei+ Autoren** (automatisch "et al."):
+```latex
+% In references.bib:
+@article{Mueller2020,
+    author = {Müller, Anna and Schmidt, Peter and Wagner, Thomas},
+    ...
+}
 
-### Bibliography Management
+% Wird zu: (Müller et al. 2020)
+```
 
-Edit [references.bib](limak-thesis-latex/references.bib) using standard BibTeX/BibLaTeX format:
+### Bibliographie (`references.bib`)
+
+**Buch**:
 ```bibtex
-@book{key2024,
-  author = {Lastname, Firstname},
-  title = {Book Title},
-  year = {2024},
-  publisher = {Publisher Name}
+@book{Porter2008,
+    author = {Porter, Michael E.},
+    title = {Competitive Advantage},
+    year = {2008},
+    publisher = {Free Press},
+    address = {New York}
 }
 ```
 
-Cite in text using Harvard author-year style:
-- `\parencite{key2024}` - Parenthetical citation: (Lastname 2024)
-- `\textcite{key2024}` - Narrative citation: Lastname (2024)
-- `\parencite[S.~15]{key2024}` - With page number: (Lastname 2024, S. 15)
-
-### Font Issues
-
-If XeLaTeX reports missing fonts:
-1. Ensure Arial is installed on the system
-2. Alternatively, switch to `nofancyfonts` option in package declaration
-3. For pdfLaTeX compatibility, remove `fancyfonts` option entirely
-
-### Eidesstattliche Erklärung (Statutory Declaration)
-
-The statutory declaration is mandatory for LIMAK theses and is pre-configured in [main-limak-thesis.tex:229-244](limak-thesis-latex/main-limak-thesis.tex#L229-L244). The text matches LIMAK institutional requirements and should not be modified without verification.
-
-## LIMAK Transferarbeit Requirements
-
-For Transferarbeiten (transfer assignments), refer to [Leitfaden_Transferarbeit_2024.pdf](instructions/Leitfaden_Transferarbeit_2024.pdf) for official guidelines. Key requirements:
-
-### Formal Requirements
-
-**Formatting** (must match exactly):
-- Font: Times New Roman 12pt OR Arial 11pt
-- Line spacing: 1.5
-- Paper: DIN A4
-- Page tolerance: ±10% of specified page count (check course syllabus)
-
-**Title Page Requirements**:
-- Program name (e.g., "Master in Management")
-- Course title
-- Faculty member name
-- Author name(s)
-
-**File Naming Convention**:
-- Format: `AuthorLastName_FacultyLastName.pdf`
-- Example: `Haider_Muehlbacher.pdf`
-- Group work: `Group1_FacultyLastName.pdf`
-- Must be submitted as PDF (not password-protected)
-
-### Structure Requirements
-
-Standard structure for Transferarbeiten:
-1. **Ausgangssituation** - Initial situation/context
-2. **Fragestellung** - Research question
-3. **Zielsetzung der Arbeit** - Objectives
-4. **Inhaltliche Bearbeitung** - Content analysis based on objectives
-5. **Schlussfolgerungen mit Handlungsempfehlungen** - Conclusions with recommendations
-
-**Outline Rules**:
-- Main chapters: Arabic numerals (1, 2, 3...)
-- Table of contents/references: Roman numerals or unnumbered
-- Subchapters must have minimum 2 subsections (e.g., 1.1, 1.2)
-- Each paragraph must contain more than one sentence
-
-### Language and Style
-
-**Scientific Writing**:
-- Avoid personal opinions ("Ich bin der Meinung...")
-- Use objective formulations: "daraus lässt sich schließen...", "kann abgeleitet werden, dass..."
-- Gender-neutral language required (Generalklausel not permitted)
-
-### Citation Requirements
-
-**General Rules**:
-- Must be consistent, traceable, and complete throughout
-- Choose either footnotes OR in-text citations (not both)
-- No citations in headings
-
-**Harvard Citation Style (as per LIMAK guidelines)**:
-
-The templates use **Harvard authoryear style** with specific LIMAK formatting:
-
-- **In-text citations** - Only surnames, no first names or initials:
-  ```
-  (Johnson / Scholes 2005, 435)
-  Bougon et al. (2006, 117) zeigen, dass...
-  ```
-
-- **Narrative citations** - Author names written manually in text:
-  ```latex
-  Güttel und Kratochvil \parencite{key} betonen...
-  ```
-  Output: `Güttel und Kratochvil (2019) betonen...`
-
-- **Parenthetical citations** - Full citation in parentheses:
-  ```latex
-  ... ist dokumentiert \parencite{key}.
-  ```
-  Output: `... ist dokumentiert (Güttel / Kratochvil 2019).`
-
-**Key LaTeX Configuration** ([main-transferarbeit.tex:73](limak-transferarbeit-latex/main-transferarbeit.tex#L73)):
-```latex
-\usepackage[backend=biber,style=authoryear,maxcitenames=2,maxbibnames=99,
-            sorting=nyt,uniquename=false,uniquelist=false]{biblatex}
+**Journal-Artikel**:
+```bibtex
+@article{Barney1991,
+    author = {Barney, Jay},
+    title = {Firm Resources and Sustained Competitive Advantage},
+    journal = {Journal of Management},
+    year = {1991},
+    volume = {17},
+    number = {1},
+    pages = {99--120},
+    doi = {10.1177/014920639101700108}
+}
 ```
 
-- `uniquename=false` - Prevents adding first names for disambiguation (Harvard rule: surnames only)
-- `uniquelist=false` - Prevents extending author lists for disambiguation
-- Two-author separator: `/` (forward slash) as per LIMAK Leitfaden example
-- Three+ authors: Automatically shortened to "et al."
-
-**Citation Commands**:
-- Use `\parencite{key}` for all citations (generates year in parentheses)
-- Write author names manually in German ("und" between authors)
-- DO NOT use `\cite{}` or `\textcite{}` - they generate incorrect formats
-
-**Internet sources format**:
-```
-Author: Title. URL: http://... (dl: DD.MM.YYYY)
-Example:
-Reichard, Christoph: New Approaches to Public Management.
-URL: http://www.example.com/paper.html (dl: 27.02.2006)
+**Online-Quelle**:
+```bibtex
+@online{McKinsey2023,
+    author = {{McKinsey \& Company}},
+    title = {The State of Organizations 2023},
+    year = {2023},
+    url = {https://www.mckinsey.com/...},
+    urldate = {2024-01-15},
+    note = {Zugriff am 15.01.2024}
+}
 ```
 
-### Plagiarism Policy
+---
 
-**Results in automatic failure**:
-- Copying passages without citation
-- Submitting another person's work as your own
-- Using AI (KI) to write the work
+## 🚀 VS Code Integration
 
-### Assessment
+Das Repository enthält vorkonfigurierte VS Code Settings:
 
-- Required for course completion
-- Grading scale: 1 (sehr gut) to 5 (nicht genügend)
-- Late submission may result in grade reduction
-- Passed assignments cannot be repeated
+**`.vscode/settings.json`**:
+- XeLaTeX als Standard-Compiler
+- Biber für Bibliographie
+- Automatische Kompilierung beim Speichern
+
+**`.vscode/extensions.json`**:
+- Empfiehlt "LaTeX Workshop" Extension
+
+### Erste Schritte mit VS Code
+
+1. Öffne den Projekt-Ordner in VS Code
+2. Installiere die empfohlene Extension (Popup erscheint automatisch)
+3. Öffne `main-limak-thesis.tex` oder `main-transferarbeit.tex`
+4. Speichere mit `Strg+S` (Windows) oder `Cmd+S` (macOS)
+5. PDF wird automatisch kompiliert und angezeigt
+
+---
+
+## 💡 Tipps für die Arbeit mit Claude
+
+### 1. Zeige Claude konkrete Beispiele
+❌ Schlecht: "Formatiere das"
+✅ Gut: "Kannst du diese Tabelle als LaTeX-Tabelle mit `booktabs` formatieren?" + Dateneingabe
+
+### 2. Beschreibe LaTeX-Fehler präzise
+❌ Schlecht: "Es kompiliert nicht"
+✅ Gut: "Beim Kompilieren erscheint Fehler X in Zeile Y" + Log-Auszug
+
+### 3. Gib Claude deine eigenen Inhalte
+❌ Schlecht: "Schreibe ein Kapitel über Digitalisierung"
+✅ Gut: "Ich habe diesen Text geschrieben, kannst du ihn als LaTeX formatieren?" + dein Text
+
+### 4. Lass Claude technische Aufgaben erledigen
+✅ "Erstelle ein TikZ-Diagramm aus diesen Daten"
+✅ "Behebe diesen LaTeX-Kompilierfehler"
+✅ "Formatiere diese Quelle für references.bib"
+✅ "Prüfe, ob alle Querverweise funktionieren"
+
+### 5. Behalte die Kontrolle über Inhalte
+❌ "Analysiere diese Theorie"
+❌ "Schreibe eine Fallstudie"
+❌ "Formuliere Forschungsfragen"
+
+---
+
+## 🎓 Wissenschaftliche Integrität
+
+### Eigenleistung
+
+Deine Master Thesis oder Transferarbeit ist eine **wissenschaftliche Eigenleistung**. Claude kann:
+- ✅ Beim Formatieren helfen
+- ✅ LaTeX-Probleme lösen
+- ✅ Strukturierung unterstützen
+
+Claude darf **NICHT**:
+- ❌ Wissenschaftliche Inhalte verfassen
+- ❌ Argumentationen entwickeln
+- ❌ Forschungsergebnisse interpretieren
+
+### Eidesstattliche Erklärung
+
+In deiner Arbeit erklärst du, dass du die Arbeit selbstständig verfasst hast. Die Nutzung von Claude für:
+- ✅ LaTeX-Formatierung ist OK (technisches Hilfsmittel)
+- ❌ Inhaltserstellung ist NICHT OK (Plagiat/Täuschung)
+
+### Im Zweifel
+
+Frage deine Betreuungsperson bei LIMAK, wenn du unsicher bist, ob eine bestimmte Nutzung von Claude zulässig ist.
+
+---
+
+## 📚 Weitere Ressourcen
+
+- **README.md**: Ausführliche Installations- und Nutzungsanleitung
+- **LIMAK Leitfaden**: Offizielle Anforderungen (im `instructions/` Ordner)
+- **LaTeX Workshop Dokumentation**: https://github.com/James-Yu/LaTeX-Workshop/wiki
+- **TeX Stack Exchange**: https://tex.stackexchange.com/ (LaTeX-Community)
+
+---
+
+**Viel Erfolg bei deiner wissenschaftlichen Arbeit!** 🎓
