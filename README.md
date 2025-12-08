@@ -120,7 +120,7 @@ cd LIMAK-Masterthesis-Template
    - Drücke `Strg+Shift+P` und wähle "Claude Code: Start Chat"
    - Oder klicke auf das Claude-Icon in der Seitenleiste
 
-> **⚠️ Wichtig**: Claude hilft beim **Formatieren und Bearbeiten** - NICHT beim Verfassen der wissenschaftlichen Inhalte! Siehe [🤖 Arbeiten mit Claude Code](#-arbeiten-mit-claude-code) für Details.
+> **⚠️ Wichtig**: Claude Code ist für **technische LaTeX-Unterstützung** - nicht für wissenschaftliche Inhalte! Siehe [KI-NUTZUNG.md](KI-NUTZUNG.md) für Richtlinien.
 
 #### Schritt 4: Arial-Schriftart prüfen
 
@@ -198,7 +198,7 @@ Arial ist unter Windows standardmäßig installiert. Zur Sicherheit prüfen:
    - Drücke `Cmd+Shift+P` und wähle "Claude Code: Start Chat"
    - Oder klicke auf das Claude-Icon in der Seitenleiste
 
-> **⚠️ Wichtig**: Claude hilft beim **Formatieren und Bearbeiten** - NICHT beim Verfassen der wissenschaftlichen Inhalte! Siehe [🤖 Arbeiten mit Claude Code](#-arbeiten-mit-claude-code) für Details.
+> **⚠️ Wichtig**: Claude Code ist für **technische LaTeX-Unterstützung** - nicht für wissenschaftliche Inhalte! Siehe [KI-NUTZUNG.md](KI-NUTZUNG.md) für Richtlinien.
 
 #### Schritt 4: Arial-Schriftart prüfen
 
@@ -544,28 +544,26 @@ Dieses Repository ist optimiert für die Nutzung mit **Claude Code** (claude.ai/
 
 ### Was Claude für dich tun kann
 
-✅ **Claude KANN helfen bei:**
+✅ **Claude Code ist ideal für technische Aufgaben:**
 - LaTeX-Formatierung (Tabellen, Abbildungen, TikZ-Diagramme)
 - Literaturverzeichnis korrekt formatieren (Harvard-Stil)
 - LaTeX-Fehler beheben und debuggen
 - Querverweise und Nummerierung prüfen
 - Titelseite und Metadaten anpassen
 
-❌ **Claude SOLLTE NICHT helfen bei:**
-- Wissenschaftliche Inhalte verfassen
-- Forschungsfragen formulieren
-- Argumentationen entwickeln
-- Literatur analysieren
-- Ergebnisse interpretieren
+❌ **Für andere Aufgaben gibt es bessere Tools:**
+- **Literaturrecherche**: Perplexity, Elicit
+- **Übersetzung**: DeepL
+- **Inhaltliche Arbeit**: Deine eigene Leistung!
 
-> **⚠️ Wichtig**: Claude unterstützt beim **Bearbeiten und Formatieren** - NICHT beim Verfassen der wissenschaftlichen Inhalte. Die fachlichen Inhalte müssen von dir stammen (Eigenleistung)!
+> **⚠️ Wichtig**: Claude Code ist optimiert für **technische LaTeX-Unterstützung**. Für wissenschaftliche Inhalte nutze andere Tools oder arbeite selbst. Siehe [KI-NUTZUNG.md](KI-NUTZUNG.md) für vollständige Richtlinien.
 
 ### Praktische Beispiele
 
 **✅ Gute Nutzung:**
-- "Kannst du diese Daten als LaTeX-Tabelle formatieren?" + deine Daten
-- "Behebe diesen LaTeX-Kompilierfehler" + Fehler-Log
-- "Erstelle ein TikZ-Diagramm aus diesen Werten" + deine Werte
+- "Erstelle eine LaTeX-Tabelle aus diesen Daten: [deine Daten]"
+- "Behebe diesen LaTeX-Fehler: [Fehlermeldung]"
+- "Formatiere diese Grafik als TikZ-Diagramm"
 
 **❌ Schlechte Nutzung:**
 - "Schreibe ein Kapitel über Digitalisierung"
@@ -574,11 +572,8 @@ Dieses Repository ist optimiert für die Nutzung mit **Claude Code** (claude.ai/
 
 ### Mehr Informationen
 
-Siehe [CLAUDE.md](CLAUDE.md) für ausführliche Informationen zu:
-- Ethische Richtlinien und wissenschaftliche Integrität
-- Konkrete Beispiele für Claude-Nutzung
-- Tipps für effektive Zusammenarbeit
-- LIMAK-spezifische Formatierungshilfe
+- **[KI-NUTZUNG.md](KI-NUTZUNG.md)** - Vollständige Richtlinien für KI-Einsatz bei wissenschaftlichen Arbeiten
+- **[CLAUDE.md](CLAUDE.md)** - Technische Details zu Claude Code und LaTeX-Formatierung
 
 ---
 

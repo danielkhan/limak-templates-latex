@@ -1,8 +1,22 @@
-# CLAUDE.md - Arbeiten mit Claude an LIMAK-Arbeiten
+# CLAUDE.md - Arbeiten mit Claude Code an LIMAK-Arbeiten
 
-Diese Datei hilft dir dabei, **Claude Code** (claude.ai/code) effektiv beim Bearbeiten deiner LIMAK Master Thesis oder Transferarbeit einzusetzen.
+Diese Datei hilft dir dabei, **Claude Code** (claude.ai/code) effektiv beim **technischen Bearbeiten** deiner LIMAK Master Thesis oder Transferarbeit einzusetzen.
 
-> **⚠️ WICHTIG**: Claude soll dich beim **Bearbeiten, Formatieren und Strukturieren** deiner Arbeit unterstützen - NICHT beim Verfassen der wissenschaftlichen Inhalte. Die fachlichen Inhalte, Argumente und Analysen müssen von dir stammen!
+> **⚠️ WICHTIG**: Claude Code ist spezialisiert auf **LaTeX-Formatierung und technische Unterstützung** - NICHT auf wissenschaftliche Inhalte. Für allgemeine Richtlinien zum KI-Einsatz bei wissenschaftlichen Arbeiten siehe **[KI-NUTZUNG.md](KI-NUTZUNG.md)**.
+
+## 🎯 Was ist Claude Code?
+
+Claude Code ist eine **VS Code Extension für technische Aufgaben** - ideal für:
+- ✅ LaTeX-Formatierung und Fehlerbehebung
+- ✅ Code und Skripte (Python, R, etc.)
+- ✅ Strukturierung und Konsistenzprüfung
+
+**Für andere Aufgaben nutze besser:**
+- 📚 **Literaturrecherche**: Perplexity, Elicit
+- 🌍 **Übersetzung**: DeepL
+- ✍️ **Formulierungshilfe**: ChatGPT, DeepL Write
+
+👉 **Vollständige KI-Richtlinien: [KI-NUTZUNG.md](KI-NUTZUNG.md)**
 
 ---
 
