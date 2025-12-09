@@ -26,8 +26,8 @@ Diese Vorlagen entsprechen den offiziellen LIMAK-Richtlinien und ermöglichen di
 
 **Option 2: Git Clone** (für fortgeschrittene Benutzer)
 ```bash
-git clone https://github.com/[YOUR-REPO]/LIMAK-Masterthesis-Template.git
-cd LIMAK-Masterthesis-Template
+git clone https://github.com/danielkhan/limak-templates-latex
+cd limak-templates-latex
 ```
 
 ### Erste Schritte
