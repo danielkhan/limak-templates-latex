@@ -17,6 +17,8 @@ Diese Vorlagen entsprechen den offiziellen LIMAK-Richtlinien und ermöglichen di
 
 ## 🚀 Schnellstart
 
+> **💡 Hinweis**: Dieser Schnellstart ist für Nutzer, die bereits mit **LaTeX und VS Code** vertraut sind. Wenn du LaTeX zum ersten Mal verwendest, springe direkt zu [💻 Installation](#-installation) für eine ausführliche Anleitung.
+
 ### Vorlage herunterladen
 
 **Option 1: Download als ZIP**
@@ -30,17 +32,28 @@ git clone https://github.com/danielkhan/limak-templates-latex
 cd limak-templates-latex
 ```
 
-### Erste Schritte
+### Erste Schritte (für erfahrene LaTeX-Nutzer)
 
-1. Wähle die passende Vorlage:
+1. **Wähle die passende Vorlage:**
    - **Master Thesis**: Ordner `limak-thesis-latex/`
    - **Transferarbeit**: Ordner `limak-transferarbeit-latex/`
 
-2. Öffne die Hauptdatei in deinem LaTeX-Editor:
-   - Master Thesis: `main-limak-thesis.tex`
-   - Transferarbeit: `main-transferarbeit.tex`
+2. **Öffne die Hauptdatei in VS Code:**
+   - Öffne VS Code → `Datei` → `Ordner öffnen...`
+   - Wähle den Template-Ordner (z.B. `limak-thesis-latex/`)
+   - Klicke auf die Hauptdatei:
+     - Master Thesis: `main-limak-thesis.tex`
+     - Transferarbeit: `main-transferarbeit.tex`
 
-3. Kompiliere das Dokument (siehe [Kompilierung](#kompilierung))
+3. **Kompiliere das Dokument:**
+   - Mit XeLaTeX kompilieren (bereits konfiguriert in `.vscode/settings.json`)
+   - In VS Code: Speichern (`Strg+S` / `Cmd+S`) oder Play-Icon (▶) klicken
+   - Detaillierte Anleitung: [📝 Kompilierung](#-kompilierung)
+
+4. **Passe die Vorlage an:**
+   - Metadaten in der Hauptdatei anpassen (Titel, Name, etc.)
+   - Kapitel-Dateien bearbeiten
+   - Literaturverzeichnis in `references.bib` pflegen
 
 ---
 
