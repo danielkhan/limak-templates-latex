@@ -1688,12 +1688,13 @@
         \color{jkureport@fg}%
         \usebox{\jkureport@watermark}%
     };
-    \node[anchor=south west,line width=0mm, inner sep=0mm] at ($(current page.south west) + (\jkureport@oddsidemargin + \jkureport@titlepage@marginleft, \jkureport@Klogo@titlepage@offset)$) {
-        \color{jkureport@fg}%
-        \ifbool{jkureport@jkulogo}{%
-            \jkureport@Klogo%
-        }{}%
-    };
+    %% K logo at bottom left - disabled for LIMAK template
+    %\node[anchor=south west,line width=0mm, inner sep=0mm] at ($(current page.south west) + (\jkureport@oddsidemargin + \jkureport@titlepage@marginleft, \jkureport@Klogo@titlepage@offset)$) {
+    %    \color{jkureport@fg}%
+    %    \ifbool{jkureport@jkulogo}{%
+    %        \jkureport@Klogo%
+    %    }{}%
+    %};
     \node[anchor=north west,line width=0mm, inner sep=0mm] at ($(current page.north east) - (\jkureport@titlepage@marginpar + \jkureport@logo@titlepage@hoffset, \jkureport@logo@titlepage@offset)$) {%
         \color{jkureport@fg}%
         \ifbool{jkureport@jkulogo}{%
