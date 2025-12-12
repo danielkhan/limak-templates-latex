@@ -29,7 +29,7 @@
 %%
 %% Document class: This is a koma-script book.
 %%
-\documentclass[a4paper,oneside,11pt,english,ngerman]{scrbook}
+\documentclass[a4paper,oneside,11pt,english,ngerman,listof=totoc]{scrbook}
 %%
 %% The comma-separated list in square brackets are class options.
 %% Useful options that you might want to use: 
@@ -107,6 +107,7 @@
 \usepackage{subfigure}
 \usepackage{graphicx}
 \usepackage{booktabs}
+\usepackage{ifthen}  % Für bedingte Anweisungen auf Titelseite
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
@@ -168,68 +169,143 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
-%% Thesis information and title page
+%% LIMAK Titelseite (gemäß offiziellem LIMAK Layout)
+%%
+%% TODO: Passen Sie die folgenden Variablen an Ihre Arbeit an:
 %%
 
-%% Command \title{title}: sets the title of your thesis
-%% TODO: Ersetzen Sie den Titel mit Ihrem eigenen Thema
-\title{Titel der Master Thesis}
+%% Farbe für LIMAK-Akzente (Orange)
+\definecolor{LIMAKorange}{RGB}{232,119,34}
 
-%% Command \titleshort{short title}: sets an abbreviated version of the thesis title for page heads
+%% Titel der Arbeit
+\newcommand{\LIMAKtitel}{Titel der Arbeit}
+
+%% Kurztitel für Kopfzeile
 \titleshort{Kurztitel für Kopfzeile}
 
-%% Command \subtitle{subtitle}: optional subtitle
-\subtitle{Untertitel der Arbeit (optional)}
+%% Name des/der Teilnehmenden
+\newcommand{\LIMAKautor}{Name des*der Teilnehmenden}
 
-%% Command \author{name}: sets the author's name; use \prefix{} and \suffix{} to add academic titles
-%%   and suffixes, use \matno{} to add the immatriculation number
-%% TODO: Ersetzen Sie mit Ihrem Namen und Ihrer Matrikelnummer
-\author{Vorname~Nachname\matno{12345678}}
+%% Name der Betreuungsperson
+\newcommand{\LIMAKbetreuer}{Name der Betreuungsperson}
 
-%% Command \supervisor[number,gender]{name}: sets the name of the supervisor (where number optionally
-%%   defines the rank of the supervisor (1-3) and gender specifies if the supervisor is male (m) or
-%%   female (f/w) to adapt gender-specific terms in German)
-%% TODO: Ersetzen Sie mit dem Namen Ihrer Betreuungsperson
-\supervisor{\prefix{Prof. Dr.} Betreuer*in~Name}
+%% Akademischer Grad (Curriculum-abhängig)
+%% Curriculum ab 2023W: "Executive Master of Business Administration"
+%% Curriculum ab 2025S: "Master of Business Administration"
+\newcommand{\LIMAKgrad}{Executive Master of Business Administration}
 
-%% Command \assistantsupervisor{name}: sets the name of the assistant supervisor(s) (optional)
-%\assistantsupervisor{\prefix{Dr.} Vorname~Nachname \suffix{MSc}}
+%% Studiengang - wählen Sie EINEN der folgenden:
+%% Option 1: Executive MBA Management & Leadership
+%% Option 2: Global Executive MBA
+%% Bei Unsicherheit beide mit "oder" angeben (wie im Template)
+\newcommand{\LIMAKstudiengang}{Executive MBA Management \& Leadership}
+\newcommand{\LIMAKstudiengangZwei}{Global Executive MBA}  % Leer lassen wenn nur ein Studiengang
+\newcommand{\LIMAKzeigOder}{true}  % "true" zeigt beide mit "oder", "false" zeigt nur ersten
 
-%% Command \degree{degree}{degree program}: sets the degree and degree program name
-%% WICHTIG: Wählen Sie die richtige Variante je nach Curriculum:
-%%   - Curriculum ab 2025S: "Master of Business Administration"
-%%   - Curriculum ab 2023W: "Executive Master of Business Administration"
-%% Passen Sie auch den Studiengang an Ihr Programm an (z.B. Executive MBA, Global Executive MBA)
-\degree{Master of Business Administration}{Executive MBA Management \& Leadership}
+%% Ort und Datum der Abgabe
+\newcommand{\LIMAKort}{Linz}
+\newcommand{\LIMAKdatum}{Monat und Jahr der Abgabe}
 
-%% Command \submissiondepartment{institute or department}: set the department that the thesis is submitted at
-\submissiondepartment{LIMAK Austrian Business School\\Johannes Kepler Universität Linz}
+%% Titelseite erstellen
+\begin{titlepage}
+\thispagestyle{empty}
 
-%% Command \date{YYYY-MM-DD}: set the day of submission (defaults to today)
-%\date{2025-XX-XX}
+%% Logo oben rechts
+\begin{tikzpicture}[remember picture,overlay]
+    \node[anchor=north east, inner sep=0] at ([xshift=-30mm,yshift=-15mm]current page.north east) {
+        \includegraphics[height=12mm]{logos/jku_LIMAK_black.png}
+    };
+\end{tikzpicture}
 
-%% Command \keywords{text}: set the document keywords
-%% HINWEIS: Schlüsselwörter sind bei LIMAK-Arbeiten nicht üblich und werden
-%% nicht auf der Titelseite angezeigt. Sie können diese Zeile auskommentiert lassen.
-%\keywords{Schlüsselwort1, Schlüsselwort2, Schlüsselwort3}
+\vspace*{20mm}
 
-%% Finally, print the title page using the above information:
-\maketitle
+%% Titel
+{\centering
+{\fontsize{22pt}{26pt}\selectfont\bfseries\LIMAKtitel\par}
+
+\vspace{15mm}
+
+%% Masterarbeit
+{\fontsize{20pt}{24pt}\selectfont Masterarbeit\par}
+
+\vspace{6mm}
+
+%% Zur Erlangung...
+{\fontsize{12pt}{14pt}\selectfont zur Erlangung des akademischen Grades\par}
+
+\vspace{3mm}
+
+%% Akademischer Grad
+{\fontsize{14pt}{17pt}\selectfont „\LIMAKgrad"\par}
+
+\vspace{8mm}
+
+%% Im außerordentlichen Masterstudium
+{\fontsize{12pt}{14pt}\selectfont im außerordentlichen Masterstudium\par}
+
+\vspace{3mm}
+
+%% Studiengang(e)
+{\fontsize{14pt}{17pt}\selectfont
+\ifthenelse{\equal{\LIMAKzeigOder}{true}}{%
+    \LIMAKstudiengang{} \underline{oder}\\[2mm]
+    \LIMAKstudiengangZwei%
+}{%
+    \LIMAKstudiengang%
+}\par}
+
+\vspace{12mm}
+}
+
+%% Linke Seite: Eingereicht von, bei, Betreuer
+\begin{flushleft}
+{\fontsize{11pt}{14pt}\selectfont
+\textbf{Eingereicht von:}\\
+\LIMAKautor
+
+\vspace{6mm}
+
+\textbf{Eingereicht bei:}\\
+LIMAK Austrian Business School GmbH
+
+\vspace{6mm}
+
+\textbf{Betreuer*in:}\\
+\LIMAKbetreuer
+
+\vspace{8mm}
+
+\LIMAKort, \textit{(\LIMAKdatum)}
+}
+\end{flushleft}
+
+\end{titlepage}
+
+%% Titel auch für PDF-Metadaten und Kopfzeilen setzen
+\title{\LIMAKtitel}
+\author{\LIMAKautor}
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
-%% Include your abstract into the frontmatter
-%%
-\import{./}{00-abstract}
+%% FRONTMATTER - Reihenfolge gemäß LIMAK Leitfaden:
+%% 1. Danksagung
+%% 2. Eidesstattliche Erklärung
+%% 3. Inhaltsverzeichnis
+%% 4. Abbildungsverzeichnis
+%% 5. Tabellenverzeichnis
+%% 6. Abkürzungsverzeichnis
+%% 7. Kurzfassung (Deutsch)
+%% 8. Abstract (Englisch)
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%
-%% Eidesstattliche Erklärung (required for LIMAK theses)
-%%
+%% 1. Danksagung
+\import{./}{00-danksagung}
+\addcontentsline{toc}{chapter}{Danksagung}
+
+%% 2. Eidesstattliche Erklärung
 \cleardoubleoddpage
 \chapter*{Eidesstattliche Erklärung}
 \addcontentsline{toc}{chapter}{Eidesstattliche Erklärung}
@@ -245,36 +321,27 @@ Die vorliegende Masterarbeit ist mit dem elektronisch übermittelten Textdokumen
 \hrulefill & \hrulefill \\
 Ort, Datum & Unterschrift \\
 \end{tabular}
-%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%
-%% Include your acknowledgements into the frontmatter (optional)
-%%
-%\cleardoubleoddpage
-%\import{./}{acknowledgements}
-%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%
-%% Add a table of contents (and optionally various other lists)
-%%
+%% 3. Inhaltsverzeichnis
 \cleardoubleoddpage
 \tableofcontents
+\addcontentsline{toc}{chapter}{Inhaltsverzeichnis}
 
-%% Print the list of tables (optional)
-%\cleardoubleoddpage
-%\listoftables
+%% 4. Abbildungsverzeichnis
+\cleardoubleoddpage
+\listoffigures
 
-%% Print the list of figures (optional)
-%\cleardoubleoddpage
-%\listoffigures
+%% 5. Tabellenverzeichnis
+\cleardoubleoddpage
+\listoftables
 
-%% Include list of acronyms (optional)
-%\cleardoubleoddpage
-%\import{./}{acronyms}
+%% 6. Abkürzungsverzeichnis (optional - auskommentieren wenn nicht benötigt)
+\cleardoubleoddpage
+\import{./}{00-abkuerzungen}
+\addcontentsline{toc}{chapter}{Abkürzungsverzeichnis}
+
+%% 7. Kurzfassung (Deutsch) und 8. Abstract (Englisch)
+\import{./}{00-abstract}
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -302,7 +369,7 @@ Ort, Datum & Unterschrift \\
 %% Print the bibliography
 %%
 \cleardoubleoddpage
-\printbibliography
+\printbibliography[title={Literaturverzeichnis}]
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

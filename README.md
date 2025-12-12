@@ -300,15 +300,48 @@ xelatex main-transferarbeit.tex
 
 ### Master Thesis anpassen
 
-1. **Titelseite** (`main-limak-thesis.tex`, Zeilen 171-210):
+1. **Titelseite** (`main-limak-thesis.tex`, Zeilen 180-206):
+
+   Die Titelseite verwendet Variablen, die du einfach anpassen kannst:
+
    ```latex
-   \title{Dein Titel der Masterarbeit}
-   \author{Dein Name}{Deine Matrikelnummer}
-   \supervisor{Titel Vorname Nachname}
-   \degree{Master of Business Administration}{Programmname}
+   %% Titel der Arbeit
+   \newcommand{\LIMAKtitel}{Dein Titel der Masterarbeit}
+
+   %% Name des/der Teilnehmenden
+   \newcommand{\LIMAKautor}{Vorname Nachname}
+
+   %% Name der Betreuungsperson
+   \newcommand{\LIMAKbetreuer}{Prof. Dr. Vorname Nachname}
+
+   %% Akademischer Grad (Curriculum-abhängig)
+   %% Curriculum ab 2023W: "Executive Master of Business Administration"
+   %% Curriculum ab 2025S: "Master of Business Administration"
+   \newcommand{\LIMAKgrad}{Executive Master of Business Administration}
+
+   %% Studiengang - wähle EINEN der folgenden:
+   \newcommand{\LIMAKstudiengang}{Executive MBA Management \& Leadership}
+   \newcommand{\LIMAKstudiengangZwei}{Global Executive MBA}
+   \newcommand{\LIMAKzeigOder}{true}  % "false" zeigt nur ersten Studiengang
+
+   %% Ort und Datum der Abgabe
+   \newcommand{\LIMAKort}{Linz}
+   \newcommand{\LIMAKdatum}{Juni 2025}
    ```
 
-2. **Kapitel bearbeiten**: Öffne die Dateien `01-einleitung.tex` bis `09-zusammenfassung.tex`
+   | Variable | Beschreibung |
+   |----------|--------------|
+   | `\LIMAKtitel` | Titel deiner Masterarbeit |
+   | `\LIMAKautor` | Dein vollständiger Name |
+   | `\LIMAKbetreuer` | Name der Betreuungsperson (mit Titel) |
+   | `\LIMAKgrad` | Akademischer Grad (je nach Curriculum) |
+   | `\LIMAKstudiengang` | Erster/einziger Studiengang |
+   | `\LIMAKstudiengangZwei` | Zweiter Studiengang (optional) |
+   | `\LIMAKzeigOder` | `true` = beide mit "oder", `false` = nur erster |
+   | `\LIMAKort` | Abgabeort |
+   | `\LIMAKdatum` | Monat und Jahr der Abgabe |
+
+2. **Kapitel bearbeiten**: Öffne die Kapitel-Dateien (`01-einleitung.tex`, `02-theoretische-grundlagen.tex`, usw.)
 
 3. **Literatur**: Füge deine Quellen in `references.bib` hinzu
 
@@ -402,19 +435,19 @@ Wie in Abbildung~\ref{fig:mein-diagramm} dargestellt...
 
 ## 🎓 Curriculum-Versionen
 
-Die Master Thesis unterstützt beide aktuellen Curricula:
+Die Master Thesis unterstützt beide aktuellen Curricula. Passe die Variable `\LIMAKgrad` entsprechend an:
 
 **Curriculum ab 2025S**:
 ```latex
-\degree{Master of Business Administration}{Executive MBA Management \& Leadership}
+\newcommand{\LIMAKgrad}{Master of Business Administration}
 ```
 
 **Curriculum ab 2023W**:
 ```latex
-\degree{Executive Master of Business Administration}{Executive MBA Management \& Leadership}
+\newcommand{\LIMAKgrad}{Executive Master of Business Administration}
 ```
 
-Anpassen in `main-limak-thesis.tex` (Zeile 203).
+Anpassen in `main-limak-thesis.tex` (Zeile 194).
 
 ---
 
